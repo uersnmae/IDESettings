@@ -11,6 +11,7 @@ call vundle#end()
 filetype plugin indent on
 
 set number
+set	relativenumber
 set autoindent
 set smartindent
 set cindent
@@ -22,8 +23,8 @@ nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
 
-nnoremap <C-h> :bp<CR>
-nnoremap <C-l> :bn<CR>
+nnoremap <S-h> :bp<CR>
+nnoremap <S-l> :bn<CR>
 
 "-----------------------------------------------------------------------"
 " Aiarline
