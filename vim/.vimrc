@@ -18,10 +18,13 @@ set cindent
 set shiftwidth=4
 set tabstop=4
 
+let mapleader = " "
+
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
+nnoremap <silent> <leader>bd :bp<bar>bd #<CR>
 
 nnoremap <S-h> :bp<CR>
 nnoremap <S-l> :bn<CR>
