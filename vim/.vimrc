@@ -26,18 +26,18 @@ if executable('clangd')
 	augroup END
 endif
 
-function! OnLspAttached()
-	echo "LSP Attached!!\n"
-	nnoremap <buffer><silent> gd <plug>(lsp-definition)
-	nnoremap <buffer><silent> gr <plug>(lsp-references)
-	nnoremap <buffer><silent> K <plug>(lsp-hover)
-	nnoremap <buffer><silent> <leader>rn <plug>(lsp-rename)
-	nnoremap <buffer><silent> <leader>d <plug>(lsp-diagnostics)
+function! OnLspAttached() abort
+	echo "LSP Attached!!"
+	nnoremap <buffer><silent> gd <Plug>(lsp-definition)
+	nnoremap <buffer><silent> gr <Plug>(lsp-references)
+	nnoremap <buffer><silent> K <Plug>(lsp-hover)
+	nnoremap <buffer><silent> <leader>rn <Plug>(lsp-rename)
+	nnoremap <buffer><silent> <leader>d <Plug>(lsp-diagnostics)
 endfunction
 
 augroup LspKeyMaps
 	autocmd!
-	autocmd User LspAttach call OnLspAttached()
+	autocmd User lsp_buffer_enabled call OnLspAttached()
 augroup END
 
 let g:asyncomplete_auto_popup = 1
@@ -137,3 +137,4 @@ augroup SpellUnderline
   augroup END
 set termguicolors
 colorscheme gruvbox
+
