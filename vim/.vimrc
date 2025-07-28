@@ -26,14 +26,24 @@ if executable('clangd')
 	augroup END
 endif
 
+augroup LspKeyMaps
+	autocmd!
+	autocmd User LspAttach call s:on_lsp_attach()
+augroup END
+
+function! s:on_lsp_attach()
+	nnoremap <buffer><silent> gd <plug>(lsp-definition)
+	nnoremap <buffer><silent> gr <plug>(lsp-references)
+	nnoremap <buffer><silent> K <plug>(lsp-hover)
+	nnoremap <buffer><silent> <leader>rn <plug>(lsp-rename)
+	nnoremap <buffer><silent> <leader>d <plug>(lsp-diagnostics)
+endfunction
+
+
 let g:asyncomplete_auto_popup = 1
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
-nnoremap <buffer> gd <plug>(lsp-definition)
-nnoremap <buffer> gr <plug>(lsp-references)
-nnoremap <buffer> K <plug>(lsp-hover)
-nnoremap <buffer> <leader>rn <plug>(lsp-rename)
 
 set number 
 set	relativenumber
@@ -127,4 +137,3 @@ augroup SpellUnderline
   augroup END
 set termguicolors
 colorscheme gruvbox
-
