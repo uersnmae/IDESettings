@@ -7,10 +7,35 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'morhetz/gruvbox'
 Plugin 'tpope/vim-fugitive'
 Plugin 'jiangmiao/auto-pairs'
+Plugin 'prabirshrestha/vim-lsp'
+Plugin 'prabirshrestha/asyncomplete.vim'
+Plugin 'prabirshrestha/asyncomplete-lsp.vim'
 call vundle#end()
 filetype plugin indent on
 
-set number
+let g:lsp_auto_start = 'on'
+
+if executable('clangd')
+	augroup LspCpp
+		autocmd!
+		autocmd User lsp_setup call lsp#register_server({
+					\ 'name': 'clangd',
+					\ 'cmd': ['clangd', '--background-index'],
+					\ 'whitelist': ['c', 'cpp', 'objc', 'objcpp'],
+					\ })
+	augroup END
+endif
+
+let g:asyncomplete_auto_popup = 1
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+nnoremap <buffer> gd <plug>(lsp-definition)
+nnoremap <buffer> gr <plug>(lsp-references)
+nnoremap <buffer> K <plug>(lsp-hover)
+nnoremap <buffer> <leader>rn <plug>(lsp-rename)
+
+set number 
 set	relativenumber
 set autoindent
 set smartindent
@@ -102,3 +127,4 @@ augroup SpellUnderline
   augroup END
 set termguicolors
 colorscheme gruvbox
+
