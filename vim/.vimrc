@@ -26,12 +26,8 @@ if executable('clangd')
 	augroup END
 endif
 
-augroup LspKeyMaps
-	autocmd!
-	autocmd User LspAttach call s:on_lsp_attach()
-augroup END
-
-function! s:on_lsp_attach()
+function! OnLspAttached()
+	echo "LSP Attached!!\n"
 	nnoremap <buffer><silent> gd <plug>(lsp-definition)
 	nnoremap <buffer><silent> gr <plug>(lsp-references)
 	nnoremap <buffer><silent> K <plug>(lsp-hover)
@@ -39,6 +35,10 @@ function! s:on_lsp_attach()
 	nnoremap <buffer><silent> <leader>d <plug>(lsp-diagnostics)
 endfunction
 
+augroup LspKeyMaps
+	autocmd!
+	autocmd User LspAttach call OnLspAttached()
+augroup END
 
 let g:asyncomplete_auto_popup = 1
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
