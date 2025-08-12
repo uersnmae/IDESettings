@@ -22,6 +22,7 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.lang.clangd" },
     -- import/override with your plugins
     { import = "plugins" },
+	{ "loctvl842/monokai-pro.nvim", lazy = true },
   },
   defaults = {
     -- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.
@@ -53,3 +54,4 @@ require("lazy").setup({
     },
   },
 })
+

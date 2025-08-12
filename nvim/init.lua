@@ -6,9 +6,11 @@ local theme = require("config.theme")
 
 -- 기본 테마 설정
 -- theme.set_theme("gruvbox", "dark", "soft")
-theme.set_theme("tokyonight", "storm")
+-- theme.set_theme("gruvbox", "dark")
 -- theme.set_theme("catppuccin", "latte")
 -- theme.set_theme("nord")
+theme.set_theme("monokai-pro")
+-- theme.set_theme("tokyonight")
 
 -- :SetTheme 명령어 추가
 vim.api.nvim_create_user_command("SetTheme", function(opts)
@@ -24,3 +26,4 @@ end, {
     return { "gruvbox", "tokyonight", "catppuccin", "nord" }
   end,
 })
+
